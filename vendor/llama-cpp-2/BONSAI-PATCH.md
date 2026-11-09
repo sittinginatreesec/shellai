@@ -1,0 +1,1 @@
+Vendored from crates.io llama-cpp-2 0.1.154, upstream commit bed81ad4ab1a6c904b11d425608e50f976d8ea62 (utilityai/llama-cpp-rs). Licensed MIT OR Apache-2.0; MIT license retained from that exact commit. Local patch: expose use_extra_bufts safely for llama.cpp --no-repack equivalence.

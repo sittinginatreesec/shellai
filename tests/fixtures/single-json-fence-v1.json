@@ -1,0 +1,128 @@
+[
+  {
+    "input": " {\"command\":\"ls\"} ",
+    "normalized": "{\"command\":\"ls\"}",
+    "valid": true,
+    "command": "ls"
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\"}\n```",
+    "normalized": "{\"command\":\"ls\"}",
+    "valid": true,
+    "command": "ls"
+  },
+  {
+    "input": "```\n{\"command\":\"printf \\\"café\\\"\"}\n```",
+    "normalized": "{\"command\":\"printf \\\"café\\\"\"}",
+    "valid": true,
+    "command": "printf \"café\""
+  },
+  {
+    "input": "```json\r\n{\"command\":\"pwd\"}\r\n```",
+    "normalized": "{\"command\":\"pwd\"}",
+    "valid": true,
+    "command": "pwd"
+  },
+  {
+    "input": "```json\r{\"command\":\"pwd\"}\r```",
+    "normalized": "{\"command\":\"pwd\"}",
+    "valid": true,
+    "command": "pwd"
+  },
+  {
+    "input": "```json {\"command\":\"pwd\"} ```",
+    "normalized": "{\"command\":\"pwd\"}",
+    "valid": true,
+    "command": "pwd"
+  },
+  {
+    "input": "\u001c```json\u001d{\"command\":\"pwd\"}\u001e```\u001f",
+    "normalized": "{\"command\":\"pwd\"}",
+    "valid": true,
+    "command": "pwd"
+  },
+  {
+    "input": "```JSON\n{\"command\":\"ls\"}\n```",
+    "normalized": "```JSON\n{\"command\":\"ls\"}\n```",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```bash\n{\"command\":\"ls\"}\n```",
+    "normalized": "```bash\n{\"command\":\"ls\"}\n```",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "prose\n```json\n{\"command\":\"ls\"}\n```",
+    "normalized": "prose\n```json\n{\"command\":\"ls\"}\n```",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\"}\n```\nprose",
+    "normalized": "```json\n{\"command\":\"ls\"}\n```\nprose",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\"}",
+    "normalized": "```json\n{\"command\":\"ls\"}",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n```json\n{\"command\":\"ls\"}\n```\n```",
+    "normalized": "```json\n{\"command\":\"ls\"}\n```",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\",\"extra\":0}\n```",
+    "normalized": "{\"command\":\"ls\",\"extra\":0}",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\",\"command\":\"pwd\"}\n```",
+    "normalized": "{\"command\":\"ls\",\"command\":\"pwd\"}",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```\n[\"ls\"]\n```",
+    "normalized": "[\"ls\"]",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```\n{\"command\":null}\n```",
+    "normalized": "{\"command\":null}",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```\n{\"command\":\"  \"}\n```",
+    "normalized": "{\"command\":\"  \"}",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "{\"command\":\"  printf '%s\\\\n' café  \"}",
+    "normalized": "{\"command\":\"  printf '%s\\\\n' café  \"}",
+    "valid": true,
+    "command": "  printf '%s\\n' café  "
+  },
+  {
+    "input": "{\"command\":\"ls\"} trailing",
+    "normalized": "{\"command\":\"ls\"} trailing",
+    "valid": false,
+    "command": null
+  },
+  {
+    "input": "```json\n{\"command\":\"ls\"}\n```\n```json\n{\"command\":\"pwd\"}\n```",
+    "normalized": "{\"command\":\"ls\"}\n```\n```json\n{\"command\":\"pwd\"}",
+    "valid": false,
+    "command": null
+  }
+]

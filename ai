@@ -1,0 +1,4 @@
+#!/bin/sh
+# Compatibility entry point for repository checkouts. The zsh plugin intercepts
+# interactive `ai, ...` before this process is executed.
+exec shellai ask -- "$@"

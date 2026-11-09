@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+*.pyc
+
+.env
+target/
+
+# Local model weights
+*.gguf
+shellai-models/

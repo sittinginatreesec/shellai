@@ -1,0 +1,36 @@
+[package]
+name = "shellai"
+version = "0.3.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Native, local AI command generation for zsh"
+license = "MIT"
+repository = "https://github.com/micrictor/shellai"
+
+[features]
+default = []
+cuda = ["llama-cpp-2/cuda"]
+vulkan = ["llama-cpp-2/vulkan"]
+metal = ["llama-cpp-2/metal"]
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+directories = "6.0"
+encoding_rs = "0.8"
+hf-hub = { version = "0.4.3", default-features = false, features = ["ureq"] }
+interprocess = "2.4"
+llama-cpp-2 = { version = "=0.1.154", default-features = false }
+ring = "0.17.14"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sysinfo = { version = "0.38.4", default-features = false, features = ["system"] }
+toml = "0.9"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[patch.crates-io]
+llama-cpp-2 = { path = "vendor/llama-cpp-2" }
