@@ -9,6 +9,7 @@ root=$(mktemp -d)
 trap 'rm -rf "$root"' EXIT
 install -Dm755 "$binary" "$root/usr/bin/shellai"
 install -Dm644 shellai.plugin.zsh "$root/usr/share/zsh/plugins/shellai/shellai.plugin.zsh"
+install -Dm644 shellai-capture.py "$root/usr/share/zsh/plugins/shellai/shellai-capture.py"
 install -Dm644 LICENSE "$root/usr/share/doc/shellai/copyright"
 install -Dm644 README.md "$root/usr/share/doc/shellai/README.md"
 mkdir -p "$root/DEBIAN" "$root/etc/zsh/zshrc.d" dist
@@ -46,7 +47,7 @@ Package: shellai
 Version: $version
 Architecture: $arch
 Maintainer: Shellai maintainers <maintainers@users.noreply.github.com>
-Depends: zsh, $deps
+Depends: zsh, python3, $deps
 Section: shells
 Priority: optional
 Description: Local AI command generation for ZSH

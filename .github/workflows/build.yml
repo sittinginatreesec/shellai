@@ -102,12 +102,15 @@ jobs:
       - name: Enumerate compute backends without model weights
         shell: bash
         run: '${{ env.CARGO_TARGET_DIR }}/release/${{ matrix.executable }} devices'
+      - name: Test Zsh command context and shortcuts
+        if: runner.os == 'Linux'
+        run: python3 tests/zsh_context.py
       - name: Package
         shell: bash
         run: |
           mkdir -p dist
           cp '${{ env.CARGO_TARGET_DIR }}/release/${{ matrix.executable }}' dist/
-          cp shellai.plugin.zsh README.md LICENSE dist/
+          cp shellai.plugin.zsh shellai-capture.py README.md LICENSE dist/
           tar -czf 'shellai-${{ matrix.artifact }}.tar.gz' -C dist .
       - name: Build Debian package
         if: runner.os == 'Linux'
